@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import "package:flutter/material.dart";
-import "package:price_alert/screens/dashboard_screen.dart";
+import 'package:price_alert/screens/set_alerts_screen.dart';
 import "package:price_alert/services/firebase_auth.dart";
 import "package:price_alert/services/flask_service.dart";
 import "package:price_alert/api/firebase_message.dart";

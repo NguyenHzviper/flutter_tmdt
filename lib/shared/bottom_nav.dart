@@ -23,14 +23,14 @@ class _BottomNavState extends State<BottomNav> {
           labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
           destinations: const [
             NavigationDestination(
-              icon: Icon(Ionicons.home_outline),
-              selectedIcon: Icon(Ionicons.home),
-              label: 'Home',
+              icon: Icon(Ionicons.bar_chart_outline),
+              selectedIcon: Icon(Ionicons.bar_chart),
+              label: 'Market',
             ),
             NavigationDestination(
-              icon: Icon(Ionicons.terminal_outline),
-              selectedIcon: Icon(Ionicons.terminal),
-              label: 'Dashboard',
+              icon: Icon(Ionicons.alarm_outline),
+              selectedIcon: Icon(Ionicons.alarm),
+              label: 'Price alerts',
             ),
             NavigationDestination(
               icon: Icon(Ionicons.person_outline),

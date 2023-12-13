@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:price_alert/controllers/mainscreen_provider.dart';
 import 'package:provider/provider.dart';
 import 'home_screen.dart';
-import 'dashboard_screen.dart';
+import 'market_screen.dart';
+import 'set_alerts_screen.dart';
 import 'package:price_alert/shared/bottom_nav.dart';
 
 import 'profile_screen.dart';
@@ -18,7 +19,7 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   List<Widget> pageList = const [
-    Home(),
+    MarketScreen(),
     DashBoard(),
     ProfileScreen(),
   ];
