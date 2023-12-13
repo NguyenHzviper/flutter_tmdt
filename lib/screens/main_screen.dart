@@ -9,9 +9,14 @@ import 'package:price_alert/shared/bottom_nav.dart';
 
 import 'profile_screen.dart';
 
-class MainScreen extends StatelessWidget {
-  MainScreen({super.key});
+class MainScreen extends StatefulWidget {
+  const MainScreen({super.key});
 
+  @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
   List<Widget> pageList = const [
     Home(),
     DashBoard(),
@@ -20,11 +25,13 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<MainScreenNotifier>(builder: (context, notifier, child) {
-      return Scaffold(
-        body: pageList[notifier.pageIndex],
-        bottomNavigationBar: const BottomNav(),
-      );
-    });
+    return Consumer<MainScreenNotifier>(
+      builder: (context, notifier, child) {
+        return Scaffold(
+          bottomNavigationBar: const BottomNav(),
+          body: pageList[notifier.pageIndex],
+        );
+      },
+    );
   }
 }

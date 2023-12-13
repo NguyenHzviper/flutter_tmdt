@@ -17,9 +17,7 @@ class Home extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {
                   Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => RegisterScreen()));
+                      context, MaterialPageRoute(builder: (context) => RegisterScreen()));
                 },
                 child: const Text('Register'),
               ),

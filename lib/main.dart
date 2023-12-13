@@ -1,11 +1,12 @@
 // ignore_for_file: prefer_const_constructors
-import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'controllers/mainscreen_provider.dart';
-import 'firebase_options.dart';
+
 import 'api/firebase_message.dart';
 import 'api/local_notification.dart';
+import 'controllers/mainscreen_provider.dart';
+import 'firebase_options.dart';
 import 'screens/main_screen.dart';
 
 void main() async {
@@ -14,14 +15,12 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
   await FirebaseMessage().initNotification();
+
   LocalNotificationServices.initialize();
-  runApp(MultiProvider(
-    providers: [
-      ChangeNotifierProvider(create: ((context) => MainScreenNotifier())),
-    ],
-    child: MyApp(),
-  ));
+
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -29,11 +28,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Firebase Messaging App',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(useMaterial3: true),
-      home: MainScreen(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => MainScreenNotifier(),
+        ),
+      ],
+      child: MaterialApp(
+        title: 'Flutter Firebase Messaging App',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(useMaterial3: true),
+        home: MainScreen(),
+      ),
     );
   }
 }

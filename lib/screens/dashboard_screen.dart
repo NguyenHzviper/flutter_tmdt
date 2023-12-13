@@ -16,7 +16,7 @@ class DashBoard extends StatefulWidget {
 class _DashBoardState extends State<DashBoard> {
   final FlaskProvider flaskProvider = FlaskProvider();
   final firebaseMessage = FirebaseMessage();
-  final String userId = FirebaseAuth.instance.currentUser!.uid;
+  // final String userId = FirebaseAuth.instance.currentUser!.uid;
   late Future<List<String>> _tradingPairsFuture;
   late Future<String> _fcmToken;
   late AutoCompleteTextField<String> cusTextField;
@@ -56,9 +56,6 @@ class _DashBoardState extends State<DashBoard> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Dashboard'),
-        ),
         body: FutureBuilder<List<String>>(
           future: _tradingPairsFuture,
           builder: (context, snapshot) {
@@ -135,11 +132,11 @@ class _DashBoardState extends State<DashBoard> {
                       ElevatedButton(
                         onPressed: () async {
                           if (_formKey.currentState!.validate()) {
-                            await flaskProvider.addAlert(
-                              userId,
-                              selectedTradingPair,
-                              targetPrice.toString(),
-                            );
+                            // await flaskProvider.addAlert(
+                            //   userId,
+                            //   selectedTradingPair,
+                            //   targetPrice.toString(),
+                            // );
                           }
                         },
                         child: Text("Add alert"),
