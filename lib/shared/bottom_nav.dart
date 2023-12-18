@@ -33,6 +33,11 @@ class _BottomNavState extends State<BottomNav> {
               label: 'Price alerts',
             ),
             NavigationDestination(
+              icon: Icon(Icons.query_stats_outlined),
+              selectedIcon: Icon(Icons.query_stats),
+              label: 'Backtest',
+            ),
+            NavigationDestination(
               icon: Icon(Ionicons.person_outline),
               selectedIcon: Icon(Ionicons.person),
               label: 'Profile',

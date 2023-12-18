@@ -7,7 +7,7 @@ import 'home_screen.dart';
 import 'market_screen.dart';
 import 'set_alerts_screen.dart';
 import 'package:price_alert/shared/bottom_nav.dart';
-
+import 'backtest_screen.dart';
 import 'profile_screen.dart';
 
 class MainScreen extends StatefulWidget {
@@ -21,6 +21,7 @@ class _MainScreenState extends State<MainScreen> {
   List<Widget> pageList = const [
     MarketScreen(),
     DashBoard(),
+    BackTestScreen(),
     ProfileScreen(),
   ];
 

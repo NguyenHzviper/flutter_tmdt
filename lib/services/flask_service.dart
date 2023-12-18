@@ -2,9 +2,10 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:price_alert/models/ListSymbols.dart';
+import 'package:price_alert/models/backtest_model.dart';
 
 class FlaskProvider {
-  static const String _baseUrl = 'https://flask-alert-be.vercel.app';
+  static const String _baseUrl = 'https://iampkn.pythonanywhere.com';
 
   Future<void> addAlert(
     String userId,
@@ -31,7 +32,7 @@ class FlaskProvider {
   Future<List<String>> getTradingPairs() async {
     try {
       final response = await http.get(
-        Uri.parse('$_baseUrl/get_trading_pairs'),
+        Uri.parse('https://flask-alert-be-iampkn.vercel.app/get_trading_pairs'),
       );
       final ListSymbols listSymbols = listSymbolsFromJson(response.body);
       return listSymbols.symbols;
@@ -88,6 +89,26 @@ class FlaskProvider {
       );
     } catch (e) {
       print('Error updating token: $e');
+    }
+  }
+
+  Future<dynamic> handleBackTest(String pair, int ma1, int ma2) async {
+    try {
+      final response = await http.post(
+        Uri.parse('$_baseUrl/backtest'),
+        headers: {
+          'Content-Type': 'application/json', // Set the content type to JSON
+        },
+        body: jsonEncode({
+          'trading_pair': pair,
+          'ma_length1': ma1,
+          'ma_length2': ma2,
+        }),
+      );
+      return backtestFromJson(response.body);
+    } catch (e) {
+      print('Error: $e');
+      return [];
     }
   }
 }
