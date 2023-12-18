@@ -92,8 +92,10 @@ class FlaskProvider {
     }
   }
 
-  Future<dynamic> handleBackTest(String pair, int ma1, int ma2) async {
+  Future<Backtest> handleBackTest(
+      String pair, int ma1, int ma2, Function(bool) onProgress) async {
     try {
+      onProgress(true);
       final response = await http.post(
         Uri.parse('$_baseUrl/backtest'),
         headers: {
@@ -105,10 +107,10 @@ class FlaskProvider {
           'ma_length2': ma2,
         }),
       );
+      onProgress(false);
       return backtestFromJson(response.body);
     } catch (e) {
-      print('Error: $e');
-      return [];
+      throw Exception('Failed to perform backtest: $e');
     }
   }
 }

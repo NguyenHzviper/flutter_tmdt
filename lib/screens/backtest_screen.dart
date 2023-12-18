@@ -1,5 +1,6 @@
-import 'dart:math';
-
+import 'package:price_alert/models/backtest_model.dart';
+import 'package:price_alert/screens/backtest_result_screen.dart';
+import 'package:price_alert/services/flask_service.dart';
 import 'package:flutter/material.dart';
 import 'package:autocomplete_textfield/autocomplete_textfield.dart';
 
@@ -11,11 +12,14 @@ class BackTestScreen extends StatefulWidget {
 }
 
 class _BackTestScreenState extends State<BackTestScreen> {
+  final FlaskProvider flaskProvider = FlaskProvider();
   late AutoCompleteTextField<String> cusTextField;
   TextEditingController textEditingController = TextEditingController();
   late String selectedTradingPair;
+  late bool isProcessing;
   late int maLength1;
   late int maLength2;
+  late Backtest backtestdata;
   final _formKey = GlobalKey<FormState>();
 
   final List<String> _suggestions = [
@@ -27,6 +31,7 @@ class _BackTestScreenState extends State<BackTestScreen> {
   @override
   void initState() {
     super.initState();
+    isProcessing = false;
   }
 
   @override
@@ -108,6 +113,39 @@ class _BackTestScreenState extends State<BackTestScreen> {
                   }
                   return null;
                 },
+              ),
+              const SizedBox(height: 16.0),
+              ElevatedButton(
+                onPressed: () async {
+                  if (_formKey.currentState!.validate()) {
+                    try {
+                      Backtest result = await flaskProvider.handleBackTest(
+                        selectedTradingPair,
+                        maLength1,
+                        maLength2,
+                        (bool progress) {
+                          setState(() {
+                            isProcessing = progress;
+                          });
+                        },
+                      );
+                      setState(() {
+                        backtestdata = result;
+                      });
+                    } finally {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => BacktestResultScreen(
+                                  result: backtestdata,
+                                )),
+                      );
+                    }
+                  }
+                },
+                child: isProcessing
+                    ? const CircularProgressIndicator()
+                    : const Text("Backtest"),
               ),
             ],
           )),
