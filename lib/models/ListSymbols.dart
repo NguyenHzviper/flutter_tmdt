@@ -5,8 +5,7 @@
 
 import 'dart:convert';
 
-ListSymbols listSymbolsFromJson(String str) =>
-    ListSymbols.fromJson(json.decode(str));
+ListSymbols listSymbolsFromJson(String str) => ListSymbols.fromJson(json.decode(str));
 
 String listSymbolsToJson(ListSymbols data) => json.encode(data.toJson());
 

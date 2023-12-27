@@ -18,7 +18,6 @@ class FirebaseMessage {
   Future<void> initNotification() async {
     await _firebaseMessaging.requestPermission(announcement: true);
     final token = await _firebaseMessaging.getToken();
-    print('Token: $token');
     await _storeTokenLocally(token as String);
     FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   }
