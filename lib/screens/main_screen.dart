@@ -1,14 +1,15 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:price_alert/controllers/coin_gecko_provider.dart';
 import 'package:price_alert/controllers/mainscreen_provider.dart';
-import 'package:provider/provider.dart';
-import 'home_screen.dart';
-import 'market_screen.dart';
-import 'set_alerts_screen.dart';
 import 'package:price_alert/shared/bottom_nav.dart';
+import 'package:provider/provider.dart';
+
 import 'backtest_screen.dart';
+import 'market_screen.dart';
 import 'profile_screen.dart';
+import 'set_alerts_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
