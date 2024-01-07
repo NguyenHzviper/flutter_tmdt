@@ -48,6 +48,7 @@ dependencies:
   ionicons: ^0.2.2
   provider: ^6.1.1
   intl: ^0.18.1
+  retry: ^3.1.2
 
 dev_dependencies:
   flutter_test:

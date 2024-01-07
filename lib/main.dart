@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:price_alert/controllers/coin_gecko_provider.dart';
+import 'package:price_alert/controllers/coins_data_provider.dart';
 import 'package:provider/provider.dart';
 
 import 'api/firebase_message.dart';
@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
           create: (context) => MainScreenNotifier(),
         ),
         ChangeNotifierProvider(
-          create: (context) => CoinGeckoProvider(),
+          create: (context) => CoinsDataProvider(),
         ),
       ],
       child: MaterialApp(

@@ -1,7 +1,6 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:price_alert/controllers/coin_gecko_provider.dart';
 import 'package:price_alert/controllers/mainscreen_provider.dart';
 import 'package:price_alert/shared/bottom_nav.dart';
 import 'package:provider/provider.dart';
