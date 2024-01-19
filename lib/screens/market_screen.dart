@@ -31,11 +31,12 @@ class _MarketScreenState extends State<MarketScreen> {
             return SafeArea(
               child: Column(
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.only(top: 16, bottom: 4, left: 16, right: 16),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        top: 16, bottom: 4, left: 16, right: 16),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
+                      children: const [
                         Text(
                           "#",
                           style: TextStyle(
